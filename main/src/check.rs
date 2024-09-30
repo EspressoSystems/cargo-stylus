@@ -253,7 +253,7 @@ pub async fn check_activate(code: Bytes, address: H160, provider: &Provider<Http
     let tx = Eip1559TransactionRequest::new()
         .to(*ARB_WASM_H160)
         .data(data)
-        .value(ONE_ETH);
+        .value(ONE_ETH * 20);
     let state = spoof::code(address, code);
     let outs = eth_call(tx, state, provider).await??;
     let ArbWasm::activateProgramReturn { dataFee, .. } =
